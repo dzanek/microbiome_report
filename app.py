@@ -82,6 +82,6 @@ with st.form("order_report"):
                 model = "gpt-3.5-turbo",
             )
 
-            st.markdown(write(openai_overview.choices[0].message.content)
+            st.markdown(openai_overview.choices[0].message.content)
             st.markdown(openai_fodmap.choices[0].message.content)
             st.markdown(openai_population.choices[0].message.content)
