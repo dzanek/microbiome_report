@@ -59,7 +59,7 @@ with st.form("order_report"):
                         "content": f"Profil mikrobiomu osoby to: {input_profile}. Co to oznacza? Uzyj języka {language}, sformatuj jako markdown"
                     }
                 ],
-                model = "gpt-3.5-turbo",
+                model = "gpt-4o",
             )
 
             openai_fodmap = client.chat.completions.create(
@@ -79,7 +79,7 @@ with st.form("order_report"):
                         "content": f"Profil mikrobiomu osoby to: {input_profile}. Odnieś do typowego profilu dla populacji. Wskaz na bakterie ktore odbiegają od normy. Uzyj języka {language}, sformatuj jako markdown"
                     }
                 ],
-                model = "gpt-3.5-turbo",
+                model = "gpt-4o",
             )
 
             st.markdown(openai_overview.choices[0].message.content)
