@@ -56,7 +56,7 @@ with st.form("order_report"):
                 messages=[
                     {
                         "role": "user",
-                        "content": f"Profil mikrobiomu osoby to: {input_profile}. Co to oznacza? Uzyj języka {language}"
+                        "content": f"Profil mikrobiomu osoby to: {input_profile}. Co to oznacza? Uzyj języka {language}, sformatuj jako markdown"
                     }
                 ],
                 model = "gpt-3.5-turbo",
@@ -66,22 +66,22 @@ with st.form("order_report"):
                 messages=[
                     {
                         "role": "user",
-                        "content": f"Profil mikrobiomu osoby to: {input_profile}. Opisz indeks FODMAP tego profilu. Podaj w oddzielnym akapicie konkretne wyliczenia. Opisz jak to się odnosi do normy tj. zdrowego poziomu. Uzyj języka {language}"
+                        "content": f"Profil mikrobiomu osoby to: {input_profile}. Opisz indeks FODMAP tego profilu. Podaj w oddzielnym akapicie konkretne wyliczenia. Opisz jak to się odnosi do normy tj. zdrowego poziomu. Uzyj języka {language}, sformatuj jako markdown"
                     }
                 ],
-                model = "gpt-3.5-turbo",
+                model = "gpt-4o",
             )
 
             openai_population = client.chat.completions.create(
                 messages=[
                     {
                         "role": "user",
-                        "content": f"Profil mikrobiomu osoby to: {input_profile}. Odnieś do typowego profilu dla populacji. Wskaz na bakterie ktore odbiegają od normy. Uzyj języka {language}"
+                        "content": f"Profil mikrobiomu osoby to: {input_profile}. Odnieś do typowego profilu dla populacji. Wskaz na bakterie ktore odbiegają od normy. Uzyj języka {language}, sformatuj jako markdown"
                     }
                 ],
                 model = "gpt-3.5-turbo",
             )
 
-            st.write(openai_overview.choices[0].message.content)
-            st.write(openai_fodmap.choices[0].message.content)
-            st.write(openai_population.choices[0].message.content)
+            st.markdown(write(openai_overview.choices[0].message.content)
+            st.markdown(openai_fodmap.choices[0].message.content)
+            st.markdown(openai_population.choices[0].message.content)
